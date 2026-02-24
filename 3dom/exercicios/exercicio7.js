@@ -1,52 +1,52 @@
-/*
-Requisitos:
-    1. Ao clicar no botão,
-        incremente o contador de cliques da sessão e o contador total.   - OK
-    2. Exiba os contadores atualizados nos parágrafos correspondentes.   - OK
-    3. Inicie o contador de cliques da sessão em 0 ao carregar a página. - OK 
-    4. O contador total deve persistir entre as sessões.
-*/
+// Requisitos:
+// 1. Inicie o contador de cliques da sessão em 0 ao carregar a página.- OK
+// 2. Recupera o contador total e inicia o contador total, caso não tenha nenhum valor. - OK
+// 3. Exiba os contadores atualizados nos parágrafos correspondentes. - OK
+// 4.incremente o contador de cliques da sessão e o contador total ao cliclar no botão.- OK
 
-let contador = 0;
+// Requisito 1
+sessionStorage.setItem("sessionClicks", 0);
 
-// Capturando elementos html
-let totalCliques = document.getElementById("total-cliques");
-let cliqueDaSessao = document.getElementById("total-sessao-cliques");
-const btn = document.getElementById("btn-clique-aqui");
-
-window.onload = function(){ // Função de reload
-    reloadSession();
-    reloadCliquesTotal();
-}
-
-function reloadSession(){ // função que inici o clique da sessão em 0 ao fazer o reload da página
-    let valorDaSessao = localStorage.getItem("total-sessao-cliques");
-    if(valorDaSessao === null){
-        valorDaSessao = 0
-    }
-    cliqueDaSessao.innerText = valorDaSessao;
-}
-
-function reloadCliquesTotal(){ // função que inicia o clique total em 0 ao fazer o reload da página.
-    let cliquesTotal = localStorage.getItem('contador');
+// Requisito 2
+    // Recupera o valor total ou inicia em 0
+    let cliquesTotal = localStorage.getItem("totalClicks");
     if(cliquesTotal === null){
-        cliquesTotal = 0
+        localStorage.setItem("totalClicks",0);
+        cliquesTotal = 0;
     }
-    totalCliques.innerHTML = cliquesTotal;
-}
 
-function incrementaContador(){ // Função que incrementa o contador e mostra o valor na sessao e no total de cliques
-    contador++
-    totalCliques.innerText = contador;
-    cliqueDaSessao.innerText = contador;
+// Requisito 3
+function atualizarTela() {
+    // contador de sessao
+    let sessao = document.getElementById("total-sessao-cliques");
+    sessao.textContent = sessionStorage.getItem("sessionClicks");
 
-    localStorage.setItem('contador', contador);
+    // contador total
+    let total = document.getElementById("total-cliques");
+    total.innerText = localStorage.getItem("totalClicks");
 };
 
+// Requisito 4
+const btn = document.getElementById("btn-clique-aqui");
 btn.addEventListener('click', () => {
-    incrementaContador();
-        atualizaTotal() +1 ;
+// Incrementa contador da sessão
+    sessionClicks = Number(sessionStorage.getItem("sessionClicks"));
+    sessionClicks++;
+    sessionStorage.setItem("sessionClicks", sessionClicks);
+
+// Incrementa contador total
+    totalClicks = Number(localStorage.getItem("totalClicks"));
+    totalClicks++;
+    localStorage.setItem("totalClicks", totalClicks);
+
+// Atualiza a tela
+    atualizarTela();
 });
+
+//Atualiza a tela ao carregar a página
+atualizarTela();
+
+
 
 
 
