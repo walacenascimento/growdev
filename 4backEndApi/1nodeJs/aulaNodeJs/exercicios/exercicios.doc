@@ -1,0 +1,6 @@
+// # - Exercícios:
+
+// ## - Exercício 1
+// - Crie um arquivo chamado `calculator.js`.
+// - Escreva uma função `soma` que recebe dois números como parâmetros e retorna a soma desses números.
+// - Imprima os resultado da soma desses números usando o console.log.
