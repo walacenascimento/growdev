@@ -4,3 +4,8 @@
 // - Crie um arquivo chamado `calculator.js`.
 // - Escreva uma função `soma` que recebe dois números como parâmetros e retorna a soma desses números.
 // - Imprima os resultado da soma desses números usando o console.log.
+
+// ## - Exercício 2
+// - Crie um arquivo `hello.js` que imprime "Hello Growdevs!".
+// - Adicione um script chamado `runHello` no package.json para executar o `hello.js`.
+// - Execute o scrip criado

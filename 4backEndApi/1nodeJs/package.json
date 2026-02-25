@@ -4,8 +4,10 @@
   "description": "Primeira aula de NodeJs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "runHello": "node src/hello.js"
   },
   "author": "",
   "license": "ISC"
 }
+ 
