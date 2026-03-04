@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | exercicio5</title>
+</head>
+<body>
+<!--
+    Crie uma página com os seguintes elementos:
+    1. Um título <h1>: "Contador de Cliques".
+    2. Um parágrafo <p> com o texto "Número de cliques: 0".
+    3. Um botão "CLIQUE AQUI".
+    4. Um texto <p> adicional: "Passe o mouse aqui!" (para o evento hover).
+    Requisitos:
+    1. Clique no Botão: Cada vez que o usuário clicar no botão, o número no primeiro parágrafo 
+    deve aumentar e ser atualizado.
+    2. Hover no Texto: Quando o usuário passar o mouse sobre o segundo parágrafo, o texto 
+    deve mudar para "Você passou o mouse!".
+    3. Ao Carregar a Página: Quando a página carregar, exiba um alert com a mensagem 
+    "Bem-vindo, Visitante".
+-->
+    <h1>Contador de Cliques</h1>
+    <p id="p-contador" class="contador">Número de cliques: 0</p>
+    <button id="btn-clique" onclick="atualizaContado()">CLIQUE AQUI</button>
+    <p id="p-aqui">Passe o mouse aqui!</p>
+
+<script src="./exercicio5.js"></script>
+</body>
+</html>

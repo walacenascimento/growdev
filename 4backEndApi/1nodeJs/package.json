@@ -1,0 +1,13 @@
+{
+  "name": "aulanodejs",
+  "version": "1.0.0",
+  "description": "Primeira aula de NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "runHello": "node src/hello.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
+ 
