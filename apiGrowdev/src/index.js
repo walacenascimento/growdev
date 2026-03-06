@@ -89,6 +89,85 @@ app.post("/growdevers", (req, res) => {
     });
 });
 
+// PUT -  Atualizando dados
+app.put("/growdevers/:id", (req, res) => {
+    // Entrada
+    const {id} = req.params; // pegando o id do growdev que será atualizado.
+    const {nome, email, idade, matriculado} = req.body // pegando os dados no body do growdev que será atualizado.
+    
+    // Processamento
+    const growdever = growdevers.find(item => item.id === id); // fazendo o filtro do id do growdev a ser atualizado.
+    if(!growdever){// verificando se o id/growdev existe
+        return res.status(404).send({
+            OK: false,
+            mensagem: "Growdev não encontrado!"
+        });
+    }
+    // passando os dados a serem atualizado
+        growdever.nome = nome,
+        growdever.email = email,
+        growdever.idade = idade,
+        growdever.matriculado = matriculado
+
+    // Saída
+        res.status(200).send({
+            OK: true,
+            mensagem: "Growdev atualizado com sucesso!",
+            dados: growdever // retorna o growdev com os dados atualizado
+        });
+});
+
+// PATCH - atualizar uma informação específica do dados
+app.patch("/growdevers/:id", (req, res) =>{
+    // Entrada
+        const { id } = req.params;
+
+    // Processamento
+    const growdever = growdevers.find(item => item.id === id);
+    if(!growdever){
+        return res.status(404).send({
+            OK: false,
+            mensagem: "Gowdever não encontrado!"
+        });
+    };
+
+    growdever.matriculado = !growdever.matriculado;
+
+    // Saída
+    res.status(200).send({
+        OK: true,
+        mensagem: "Matrícula do Growdev atualizado com sucesso!",
+        dados: growdever
+    });
+
+});
+
+// DELETE - Excluíndo dados 
+app.delete("/growdevers/:id", (req, res) => {
+    // Entrada de dados
+    const { id } = req.params;
+
+    // Processamento de dados
+    const growdeverIndex = growdevers.findIndex(item => item.id === id);
+
+    if(growdeverIndex < 0) {
+        return res.status(404).send({
+            OK: false,
+            mensagem: "Growdever não encontrado"
+        });
+    }
+
+    growdevers.splice(growdeverIndex, 1);
+
+    //Saída de dados
+    res.status(200).send({
+        OK: true,
+        mensagem: "Gowdever excluído com sucesso!",
+        dados: growdevers
+    });
+
+});
+
 
 
 app.listen(port, ()=>{
